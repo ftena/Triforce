@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Triforce</string>
+	<string-array name="battery_info_array">
+		<item>Battery Level</item>
+		<item>Battery Voltage</item>
+		<item>Battery Temperature</item>
+		<item>Technology</item>
+		<item>Status</item>
+		<item>Health</item>
+	</string-array>
+	<string name="menu_info">Info</string>
+	<string name="menu_exit">Exit</string>	
+	<string name="dialog_info">V 1.06 // More info @ www.tarlic.com</string>
+	<string name="dialog_exit">Are you sure you want to exit?</string>  
+</resources>
