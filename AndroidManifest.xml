@@ -3,28 +3,33 @@
 	package="comm.tarlic.triforce" android:versionCode="6"
 	android:versionName="1.0">
 
-<uses-sdk android:minSdkVersion="7" 
-          android:targetSdkVersion="7"
+<uses-sdk android:minSdkVersion="9" 
+          android:targetSdkVersion="9"
           android:maxSdkVersion="10" />
 
-	<application android:label="@string/app_name" android:icon="@drawable/ic_launcher_triforce">
+<uses-permission android:name="android.permission.READ_CALL_LOG"/>
+
+<uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+<application android:label="@string/app_name"
+    android:icon="@drawable/ic_launcher_triforce"
+    android:allowBackup="true">"
 	
-		<!--
-			Por cada Activity instanciada durante la ejecución de la aplicación,
-			es necesario un <activity> ... </activity>
-		-->
+	<!--
+		Por cada Activity instanciada durante la ejecución de la aplicación,
+		es necesario un <activity> ... </activity>
+	-->
 
-		<activity android:name=".TriforceBatteryInfoList" android:label="@string/app_name">
+	<activity android:name=".TriforceBatteryInfoList" android:label="@string/app_name">
 		
-				<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		
-		</activity>
+		<intent-filter>
+			<action android:name="android.intent.action.MAIN" />
+			<category android:name="android.intent.category.LAUNCHER" />
+		</intent-filter>
+	
+	</activity>
 
-	</application>
-
+</application>
         
 </manifest> 
 
