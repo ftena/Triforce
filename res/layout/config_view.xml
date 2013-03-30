@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_height="fill_parent"  
+    android:layout_width="fill_parent">  
+		<TextView android:id="@+id/DateText"
+		    android:textStyle="bold"
+			android:text="@string/date"
+			android:layout_width="fill_parent"
+			android:layout_toLeftOf="@+id/EditButton"
+			android:layout_height="wrap_content"></TextView>
+		<Button android:id="@+id/EditButton"
+		    android:text="@string/edit"			
+        	android:layout_width="wrap_content"  
+        	android:layout_alignParentRight="true"  
+        	android:layout_height="wrap_content"
+        	android:onClick="showDatePickerDialog"></Button>  
+</RelativeLayout>
+

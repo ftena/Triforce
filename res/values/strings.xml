@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Triforce</string>
+	<string name="title_activity_display_config">Configuration</string>
+	<string name="title_activity_display_picker">Picker</string>
 	<string-array name="battery_info_array">
 		<item>Battery Level</item>
 		<item>Battery Voltage</item>
@@ -9,8 +11,14 @@
 		<item>Status</item>
 		<item>Health</item>
 	</string-array>
+	<string name="menu_config">Config</string>
 	<string name="menu_info">Info</string>
 	<string name="menu_exit">Exit</string>	
-	<string name="dialog_info">V 1.06 // More info @ www.tarlic.com</string>
+	<string name="edit">Edit</string>
+	<string name="date">Date</string>
+	<string name="dialog_info">V 2.00 // More info @ www.tarlic.com</string>
 	<string name="dialog_exit">Are you sure you want to exit?</string>  
+	<string name="ok">OK</string>
+	<string name="cancel">Cancel</string>
+	<string name="nodata">No data</string>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="comm.tarlic.triforce" android:versionCode="6"
-	android:versionName="1.0">
+	package="comm.tarlic.triforce" android:versionCode="0"
+	android:versionName="2.0">
 
 <uses-sdk android:minSdkVersion="9" 
           android:targetSdkVersion="9"
@@ -20,7 +20,9 @@
 		es necesario un <activity> ... </activity>
 	-->
 
-	<activity android:name=".TriforceBatteryInfoList" android:label="@string/app_name">
+	<activity
+	    android:name="comm.tarlic.triforce.TriforceBatteryInfoList"
+	    android:label="@string/app_name">
 		
 		<intent-filter>
 			<action android:name="android.intent.action.MAIN" />
@@ -28,7 +30,12 @@
 		</intent-filter>
 	
 	</activity>
-
+	
+	<activity
+        android:name="comm.tarlic.triforce.DisplayConfigActivity"
+        android:label="@string/title_activity_display_config">
+    </activity>
+	
 </application>
         
 </manifest> 
