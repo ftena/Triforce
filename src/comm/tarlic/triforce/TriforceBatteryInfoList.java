@@ -2,9 +2,11 @@ package comm.tarlic.triforce;
 
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -209,8 +211,11 @@ public class TriforceBatteryInfoList extends ListActivity {
     		while (mCursor.moveToNext()) {
 
     	        // Gets the value from the column.
+    			// The duration of the call in seconds.
     	        int duration = mCursor.getInt(durationColumn);
+    	        // The date the call occurred, in milliseconds since the epoch.
     	        long date = mCursor.getLong(dateColumn);
+    	        
     	        Timestamp ts = new Timestamp(date);
     	        
     	        android.util.Log.i(getLocalClassName(), "found timestamp = " + ts.getTime() + 
@@ -239,19 +244,22 @@ public class TriforceBatteryInfoList extends ListActivity {
     	
     	android.util.Log.i(getLocalClassName(), "totalCallDuration = " + String.valueOf(totalCallDuration));
     	
+    	// Format the string
+    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+    	
+    	sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT"));
+    	
+    	HashMap<String,String> temp = new HashMap<String,String>();
+		temp.put("field","Total call duration");
+        temp.put("value", sdf.format(totalCallDuration*1000));
+        
     	if(update == false) {    
     		// Appends the specified element to the list 
-			HashMap<String,String> temp = new HashMap<String,String>();
-			temp.put("field","Total call duration");
-	        temp.put("value", String.valueOf(totalCallDuration));
-	        list.add(temp);
+			list.add(temp);
     	} else {
     		list.remove(0);
     		
-    		HashMap<String,String> temp = new HashMap<String,String>();
-			temp.put("field","Total call duration");
-	        temp.put("value", String.valueOf(totalCallDuration));
-	        list.add(0, temp);
+    	    list.add(0, temp);
     	}
     	showList();
 	}
