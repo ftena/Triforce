@@ -136,19 +136,21 @@ public class TriforceBatteryInfoList extends ListActivity {
     	String[] projection = {    	         
     	        android.provider.CallLog.Calls.TYPE,
     	        android.provider.CallLog.Calls.DATE,
-    	        android.provider.CallLog.Calls.DURATION    	        
+    	        android.provider.CallLog.Calls.DURATION   	        
     	        };
     	
     	/*
     	 * The three next lines are to filter the selection.
-    	 * We only get the lines greater than the timestampGivenByUser.
+    	 * We only get the lines greater than the configuredTimestamp.
     	 */
     	
     	String sortOrder = android.provider.CallLog.Calls.DATE + " DESC";    	
     	
-    	String selection = android.provider.CallLog.Calls.DATE + ">=?"; 
+    	String selection = android.provider.CallLog.Calls.DATE + ">=?" +
+    						" AND " + android.provider.CallLog.Calls.TYPE + "=?"; 
     	
-    	String[] selectionArgs = new String[] { String.valueOf(timestamp.getTime()) };
+    	String[] selectionArgs = new String[] { String.valueOf(timestamp.getTime()),
+    			String.valueOf(android.provider.CallLog.Calls.OUTGOING_TYPE) };
     	    	
     	/*
     	 *  public final Cursor query
@@ -173,7 +175,7 @@ public class TriforceBatteryInfoList extends ListActivity {
     	
     	// Retrieve the column-indexes of type, date and duration
     	 
-        // int typeColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.TYPE);
+        int typeColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.TYPE);
 
         int dateColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.DATE);
 
@@ -211,6 +213,8 @@ public class TriforceBatteryInfoList extends ListActivity {
     		while (mCursor.moveToNext()) {
 
     	        // Gets the value from the column.
+    			// The type of the call: INCOMING_TYPE (1), OUTGOING_TYPE (2), MISSED_TYPE (3)
+    	        String type = mCursor.getString(typeColumn);
     			// The duration of the call in seconds.
     	        int duration = mCursor.getInt(durationColumn);
     	        // The date the call occurred, in milliseconds since the epoch.
@@ -219,7 +223,7 @@ public class TriforceBatteryInfoList extends ListActivity {
     	        Timestamp ts = new Timestamp(date);
     	        
     	        android.util.Log.i(getLocalClassName(), "found timestamp = " + ts.getTime() + 
-    	        		" toString = " + ts.toString());
+    	        		" toString = " + ts.toString() + " type = " + type);
 
     	        /* Using Calendar to get the date 
     	        final Calendar cal = Calendar.getInstance();
@@ -233,7 +237,7 @@ public class TriforceBatteryInfoList extends ListActivity {
     	         * This "if" clause is not necessary if the selection was made using
     	         * the query above.  	         
     	        */
-    	        // if (timestamp.after(timestampGivenByUser))    	        
+    	        // if (timestamp.after(configuredTimestamp))    	        
     	        	
     	        totalCallDuration += duration;
     	        
@@ -396,7 +400,7 @@ public class TriforceBatteryInfoList extends ListActivity {
 	        
 	        temp = new HashMap<String,String>();
 			temp.put("field","Battery Temperature");
-	        temp.put("value", String.valueOf(intent.getIntExtra("temperature", 0)/10) + " ÂºC");
+	        temp.put("value", String.valueOf(intent.getIntExtra("temperature", 0)/10) + " ºC");
 	        list.add(temp);
 	        
 	        temp = new HashMap<String,String>();
