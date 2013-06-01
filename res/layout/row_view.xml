@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- For a better reference to the Android styles and themes, see the Android Styles (styles.xml)  -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
      android:layout_width="fill_parent"
      android:layout_height="fill_parent"
      android:orientation="vertical">
      <TextView android:id="@+id/field"
-         android:textSize="16sp"
-         android:textStyle="bold"
+         style="@android:style/TextAppearance.Medium"
          android:layout_width="fill_parent"
          android:layout_height="fill_parent"/>
      <TextView android:id="@+id/value"
-         android:textSize="16sp"
+         style="@android:style/TextAppearance.Small"
          android:layout_width="fill_parent"
          android:layout_height="fill_parent"/>
  </LinearLayout>

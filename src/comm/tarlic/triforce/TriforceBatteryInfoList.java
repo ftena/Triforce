@@ -48,6 +48,8 @@ public class TriforceBatteryInfoList extends ListActivity {
 	
 	private TimestampDataSource mDataSource;
 	
+	private int callDuration = 0;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -87,13 +89,13 @@ public class TriforceBatteryInfoList extends ListActivity {
         	android.util.Log.e(getLocalClassName(), "There is more than one registry in db");
         }
       
-        list.clear();
+		// Get the call duration since configuredTimestamp
+		setCallDuration(calculateCallDuraton(this.configuredTimestamp, false));
         
 		this.registerReceiver(this.BatteryReceiver,
 				new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 	    
-		// Get the call duration since configuredTimestamp
-		getCallDuration(this.configuredTimestamp, false);
+
 		
     }
     
@@ -110,18 +112,26 @@ public class TriforceBatteryInfoList extends ListActivity {
     @Override
     protected void onResume() {
     	mDataSource.open();
+    	
+    	//this.registerReceiver(this.BatteryReceiver,
+		//		new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+    	
     	super.onResume();
     }
 
     @Override
     protected void onPause() {
     	mDataSource.close();
+    	
+    	// Unregister the previously registered BroadcastReceiver
+    	//this.unregisterReceiver(this.BatteryReceiver);
+    	
     	super.onPause();
     }
     
     // The next line avoid the dead code warning
     @SuppressWarnings("unused")
-	private void getCallDuration(Timestamp timestamp, Boolean update) {
+	private int calculateCallDuraton(Timestamp timestamp, Boolean update) {
     	// Content Provider CallLog.Calls. Contains the recent calls.
     	/*
     	 * A content provider manages access to a central repository of data.
@@ -248,8 +258,10 @@ public class TriforceBatteryInfoList extends ListActivity {
     	
     	android.util.Log.i(getLocalClassName(), "totalCallDuration = " + String.valueOf(totalCallDuration));
     	
+    	return totalCallDuration;
+    	
     	// Format the string
-    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+    	/*SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
     	
     	sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT"));
     	
@@ -265,7 +277,8 @@ public class TriforceBatteryInfoList extends ListActivity {
     		
     	    list.add(0, temp);
     	}
-    	showList();
+    	
+    	showList();*/
 	}
 
 	//@Override    
@@ -325,7 +338,7 @@ public class TriforceBatteryInfoList extends ListActivity {
             	Timestamp ts = new Timestamp(data.getLongExtra(TriforceBatteryInfoList.SAVED_TIMESTAMP, 0));
 
             	// Set the new timestamp configured by the user.
-            	updateTimestamp(ts);
+            	setConfiguredTimestamp(ts);
             	
             	// Gets the data repository in write mode
                 mDataSource.open();
@@ -334,13 +347,22 @@ public class TriforceBatteryInfoList extends ListActivity {
             	mDataSource.update(id, ts.getTime());
             	
             	// Update the call duration using the value configured by the user
-            	getCallDuration(ts, true);
+            	setCallDuration(calculateCallDuraton(ts, false));
+            	
+            	// list.clear();
+            	
+            	// Unregister the previously registered BroadcastReceiver
+            	this.unregisterReceiver(this.BatteryReceiver);
+            	
+            	// Register again the BroadcastReceiver
+            	this.registerReceiver(this.BatteryReceiver,
+        				new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
        
             }
         }
     }
     
-    private void updateTimestamp(Timestamp ts) {
+    private void setConfiguredTimestamp(Timestamp ts) {
 		this.configuredTimestamp = ts;
 	}
 
@@ -382,13 +404,33 @@ public class TriforceBatteryInfoList extends ListActivity {
     	alert.show();
    }
     
-    private BroadcastReceiver BatteryReceiver
+    public int getCallDuration() {
+		return this.callDuration;
+	}
+
+	public void setCallDuration(int callDuration) {
+		this.callDuration = callDuration;
+	}
+
+	private BroadcastReceiver BatteryReceiver
 	= new BroadcastReceiver() {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			
-			HashMap<String,String> temp = new HashMap<String,String>();
+			list.clear();
+			
+	    	// Format the string
+	    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+	    	
+	    	sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT"));
+	    	
+	    	HashMap<String,String> temp = new HashMap<String,String>();
+			temp.put("field","Total call duration");
+	        temp.put("value", sdf.format(getCallDuration()*1000));
+	        list.add(temp);
+	        
+			temp = new HashMap<String,String>();
 			temp.put("field","Battery Level");
 	        temp.put("value", String.valueOf(intent.getIntExtra("level", 0)) + "%");
 	        list.add(temp);
@@ -455,6 +497,8 @@ public class TriforceBatteryInfoList extends ListActivity {
 			temp.put("field","Health");
 	        temp.put("value", strHealth);
 	        list.add(temp);
+	        
+	        showList();
 		}
 	};
 };
