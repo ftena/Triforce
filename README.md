@@ -1,5 +1,5 @@
 # Triforce
-Android application
+Android application.
 
 Download it in Google Play:
 
