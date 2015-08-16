@@ -442,7 +442,7 @@ public class TriforceBatteryInfoList extends ListActivity {
 	        
 	        temp = new HashMap<String,String>();
 			temp.put("field","Battery Temperature");
-	        temp.put("value", String.valueOf(intent.getIntExtra("temperature", 0)/10) + " ºC");
+	        temp.put("value", String.valueOf(intent.getIntExtra("temperature", 0)/10) + " ÂºC");
 	        list.add(temp);
 	        
 	        temp = new HashMap<String,String>();
