@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 
@@ -16,13 +17,14 @@ implements DatePickerDialog.OnDateSetListener {
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface DatePickerListener {
-        public void onDatePickerClick(DialogFragment dialog, int year, int month, int day);        
+        void onDatePickerClick(DialogFragment dialog, int year, int month, int day);
     }
 	
     // Use this instance of the interface to deliver action events
-    DatePickerListener mListener;
+    private DatePickerListener mListener;
     
-	@Override
+	@NonNull
+    @Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		// Use the current date as the default date in the picker
 		final Calendar c = Calendar.getInstance();

@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -27,21 +26,24 @@ import android.widget.SimpleAdapter;
 
 public class TriforceBatteryInfoList extends ListActivity {
 
-	final ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String,String>>();
+	private final ArrayList<HashMap<String,String>> list = new ArrayList<>();
 	
 	public final static String SAVED_TIMESTAMP = "comm.tarlic.triforce.TIMESTAMP";
-	
-	// Timestamp(int year, int month, int date, int hour, int minute, int second, int nano)
-	final Timestamp defaultTimestamp = new Timestamp (113, 0, 1, 0, 0, 0, 0);
+
+	/*
+	 * TODO: do not use Timestamp(int, int, int, int, int, int, int).
+	 * It is deprecated.
+	 */
+	private final Timestamp defaultTimestamp = new Timestamp (113, 0, 1, 0, 0, 0, 0);
 	
 	/*
 	 * The timestamp configured by the user, or set to default timestamp if
 	 * the db is created the first time.
 	 */
-	public Timestamp configuredTimestamp;
+	private Timestamp configuredTimestamp;
 	
 	// The code used to manage the configuration request
-	static final int CONFIG_REQUEST = 1;
+	private static final int CONFIG_REQUEST = 1;
 
 	// Unique id
 	static final int id = 999;
@@ -75,7 +77,7 @@ public class TriforceBatteryInfoList extends ListActivity {
             android.util.Log.i(getLocalClassName(), "defaultTimestamp = " + defaultTimestamp.getTime() + 
             		" toString = " + defaultTimestamp.toString());
         	
-        	mDataSource.insert(id, defaultTimestamp.getTime());
+        	mDataSource.insert(defaultTimestamp.getTime());
         	this.configuredTimestamp = this.defaultTimestamp;
         } else if (timestamps.size() == 1) {
         	// Get the configured timestamp
@@ -90,7 +92,7 @@ public class TriforceBatteryInfoList extends ListActivity {
         }
       
 		// Get the call duration since configuredTimestamp
-		setCallDuration(calculateCallDuraton(this.configuredTimestamp, false));
+		setCallDuration(calculateCallDuration(this.configuredTimestamp, false));
         
 		this.registerReceiver(this.BatteryReceiver,
 				new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -130,8 +132,7 @@ public class TriforceBatteryInfoList extends ListActivity {
     }
     
     // The next line avoid the dead code warning
-    @SuppressWarnings("unused")
-	private int calculateCallDuraton(Timestamp timestamp, Boolean update) {
+	private int calculateCallDuration(Timestamp timestamp, Boolean update) {
     	// Content Provider CallLog.Calls. Contains the recent calls.
     	/*
     	 * A content provider manages access to a central repository of data.
@@ -344,10 +345,10 @@ public class TriforceBatteryInfoList extends ListActivity {
                 mDataSource.open();
             	
                 // Update the db
-            	mDataSource.update(id, ts.getTime());
+            	mDataSource.update(ts.getTime());
             	
             	// Update the call duration using the value configured by the user
-            	setCallDuration(calculateCallDuraton(ts, false));
+            	setCallDuration(calculateCallDuration(ts, false));
             	
             	// list.clear();
             	
@@ -404,15 +405,15 @@ public class TriforceBatteryInfoList extends ListActivity {
     	alert.show();
    }
     
-    public int getCallDuration() {
+    private int getCallDuration() {
 		return this.callDuration;
 	}
 
-	public void setCallDuration(int callDuration) {
+	private void setCallDuration(int callDuration) {
 		this.callDuration = callDuration;
 	}
 
-	private BroadcastReceiver BatteryReceiver
+	private final BroadcastReceiver BatteryReceiver
 	= new BroadcastReceiver() {
 
 		@Override
@@ -425,27 +426,27 @@ public class TriforceBatteryInfoList extends ListActivity {
 	    	
 	    	sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT"));
 	    	
-	    	HashMap<String,String> temp = new HashMap<String,String>();
+	    	HashMap<String,String> temp = new HashMap<>();
 			temp.put("field","Total call duration");
 	        temp.put("value", sdf.format(getCallDuration()*1000));
 	        list.add(temp);
 	        
-			temp = new HashMap<String,String>();
+			temp = new HashMap<>();
 			temp.put("field","Battery Level");
 	        temp.put("value", String.valueOf(intent.getIntExtra("level", 0)) + "%");
 	        list.add(temp);
 			
-	        temp = new HashMap<String,String>();
+	        temp = new HashMap<>();
 			temp.put("field","Battery Voltage");
 	        temp.put("value", String.valueOf(intent.getIntExtra("voltage", 0)/1000) + " V");
 	        list.add(temp);
 	        
-	        temp = new HashMap<String,String>();
+	        temp = new HashMap<>();
 			temp.put("field","Battery Temperature");
 	        temp.put("value", String.valueOf(intent.getIntExtra("temperature", 0)/10) + " ºC");
 	        list.add(temp);
 	        
-	        temp = new HashMap<String,String>();
+	        temp = new HashMap<>();
 			temp.put("field","Technology");
 	        temp.put("value", intent.getStringExtra("technology"));
 	        list.add(temp);
@@ -471,7 +472,7 @@ public class TriforceBatteryInfoList extends ListActivity {
 				strStatus = "Unknown";
 			}
 
-			temp = new HashMap<String,String>();
+			temp = new HashMap<>();
 			temp.put("field","Status");
 	        temp.put("value", strStatus);
 	        list.add(temp);
@@ -493,7 +494,7 @@ public class TriforceBatteryInfoList extends ListActivity {
 				strHealth = "Unknown";
 			}
 			
-			temp = new HashMap<String,String>();
+			temp = new HashMap<>();
 			temp.put("field","Health");
 	        temp.put("value", strHealth);
 	        list.add(temp);
@@ -501,5 +502,5 @@ public class TriforceBatteryInfoList extends ListActivity {
 	        showList();
 		}
 	};
-};
+}
 

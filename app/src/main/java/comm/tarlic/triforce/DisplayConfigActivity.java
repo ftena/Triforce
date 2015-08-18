@@ -56,9 +56,9 @@ public class DisplayConfigActivity extends FragmentActivity
 
 		TextView text = (TextView) findViewById(R.id.DateText);
 		
-		text.setText("Count call duration from:\n" + df.format(cal.getTime()).toString());
+		text.setText("Count call duration from:\n" + df.format(cal.getTime()));
 	}	
-	
+
 	public void showDatePickerDialog(View v) {
 	    DialogFragment newFragment = new DatePickerFragment();
 	    newFragment.show(getSupportFragmentManager(), "datePicker");
@@ -71,7 +71,10 @@ public class DisplayConfigActivity extends FragmentActivity
     public void onDatePickerClick(DialogFragment dialog, int year, int month, int day) {
         // User touched the dialog's positive button
 
-    	// Timestamp(int year, int month, int date, int hour, int minute, int second, int nano)
+    	/*
+    	 * TODO: do not use Timestamp(int, int, int, int, int, int, int).
+    	 * It is deprecated.
+    	 */
 		final Timestamp timestamp = new Timestamp (year-1900, month, day, 0, 0, 0, 0);
 		
 		updateDate(timestamp.getTime());

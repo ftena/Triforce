@@ -9,11 +9,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class TimestampDataSource {
+class TimestampDataSource {
 
 	// Database fields
 	  private SQLiteDatabase db;
-	  private EnclosingDbHelper mDbHelper;
+	  private final EnclosingDbHelper mDbHelper;
 	  
 	  public TimestampDataSource(Context context) {
 		  mDbHelper = new EnclosingDbHelper(context);
@@ -31,10 +31,10 @@ public class TimestampDataSource {
 		  mDbHelper.close();
 	  }
 	  
-	  public long insert(int id, long ts) {
+	  public void insert(long ts) {
 		// Create a new map of values, where column names are the keys
 		  ContentValues values = new ContentValues();
-		  values.put(EnclosingDb.Entry.COLUMN_ID, id);
+		  values.put(EnclosingDb.Entry.COLUMN_ID, TriforceBatteryInfoList.id);
 		  values.put(EnclosingDb.Entry.COLUMN_TIMESTAMP, ts);
 		  
 		  // Insert the new row, returning the primary key value of the new row
@@ -43,11 +43,9 @@ public class TimestampDataSource {
 		           EnclosingDb.Entry.TABLE_NAME,
 		           null,
 		           values);
- 
-		  return newRowId;
 	  }
 	  
-	  public int update(int id, long ts) {
+	  public void update(long ts) {
 		  // New value for one column
 		  ContentValues values = new ContentValues();
 		  values.put(EnclosingDb.Entry.COLUMN_TIMESTAMP, ts);
@@ -55,19 +53,17 @@ public class TimestampDataSource {
 
 		  // Which row to update, based on the ID
 		  String selection = EnclosingDb.Entry.COLUMN_ID + " LIKE ?";
-		  String[] selectionArgs = { String.valueOf(id) };
+		  String[] selectionArgs = { String.valueOf(TriforceBatteryInfoList.id) };
 
-		  int count = db.update(
+		  db.update(
 				  EnclosingDb.Entry.TABLE_NAME,
 				  values,
 				  selection,
 				  selectionArgs);
-
-		  return count;
 	  }
 	  
 	  public List<TimestampData> getAllTimestamps() {
-		    List<TimestampData> timestamps = new ArrayList<TimestampData>();
+		    List<TimestampData> timestamps = new ArrayList<>();
 
 		 // Define a projection that specifies which columns from the database
 		 // you will actually use after this query.

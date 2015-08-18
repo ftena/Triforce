@@ -4,10 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class EnclosingDbHelper extends SQLiteOpenHelper {
+class EnclosingDbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "EnclosingDb.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "EnclosingDb.db";
 
     private static final String INTEGER_TYPE = " INTEGER";    
     // private static final String REAL_TYPE = " REAL";
@@ -43,11 +43,4 @@ public class EnclosingDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
-    
-    //API Level 11
-    /*
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
-    }
-    */
 }

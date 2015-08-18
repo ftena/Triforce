@@ -1,6 +1,6 @@
 package comm.tarlic.triforce;
 
-public class TimestampData {
+class TimestampData {
 
 	private int id;
 	private long ts;

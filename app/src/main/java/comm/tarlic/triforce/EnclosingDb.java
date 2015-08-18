@@ -2,7 +2,7 @@ package comm.tarlic.triforce;
 
 import android.provider.BaseColumns;
 
-public class EnclosingDb{
+class EnclosingDb{
 
 public static abstract class Entry implements BaseColumns {
     public static final String TABLE_NAME = "table_timestamp";
