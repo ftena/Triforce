@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="48"
+   height="48"
+   viewBox="0 0 0 173.6"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="triforce_hdpi.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata21">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="721"
+     inkscape:window-width="914"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     showgrid="false"
+     inkscape:zoom="1.4849242"
+     inkscape:cx="95.138317"
+     inkscape:cy="77.999296"
+     inkscape:window-x="541"
+     inkscape:window-y="97"
+     inkscape:current-layer="svg2"
+     inkscape:window-maximized="0" />
+  <defs
+     id="defs8">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective23" />
+    <linearGradient
+       id="orange-brown">
+      <stop
+         id="stop4668"
+         style="stop-color: rgb(255, 204, 0); stop-opacity: 1;"
+         offset="0" />
+      <stop
+         id="stop4670"
+         style="stop-color: rgb(193, 154, 0); stop-opacity: 1;"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       id="White-Yellow">
+      <stop
+         id="stop3175"
+         style="stop-color: rgb(255, 255, 186); stop-opacity: 1;"
+         offset="0" />
+      <stop
+         id="stop3177"
+         style="stop-color: rgb(255, 255, 0); stop-opacity: 1;"
+         offset="1" />
+    </linearGradient>
+    <radialGradient
+       cx="157.84048"
+       cy="150.89961"
+       r="43.125"
+       fx="157.84048"
+       fy="150.89961"
+       id="radialGradient3179"
+       xlink:href="#White-Yellow"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86558,0,20.8708)" />
+    <radialGradient
+       cx="56.490795"
+       cy="172.72972"
+       r="43.125"
+       fx="56.490795"
+       fy="172.72972"
+       id="radialGradient3187"
+       xlink:href="#White-Yellow"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86558,0,20.8708)" />
+    <radialGradient
+       cx="114.31902"
+       cy="58.69239"
+       r="43.125"
+       fx="114.31902"
+       fy="58.69239"
+       id="radialGradient3195"
+       xlink:href="#White-Yellow"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86558,0,9.23089)" />
+    <linearGradient
+       x1="150.62578"
+       y1="150.62578"
+       x2="208.1227"
+       y2="205.42331"
+       id="linearGradient4672"
+       xlink:href="#orange-brown"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1,0,0,1,320,0)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#White-Yellow"
+       id="radialGradient2406"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86558,0,9.23089)"
+       cx="114.31902"
+       cy="58.69239"
+       fx="114.31902"
+       fy="58.69239"
+       r="43.125" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#White-Yellow"
+       id="radialGradient2408"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86558,0,20.8708)"
+       cx="56.490795"
+       cy="172.72972"
+       fx="56.490795"
+       fy="172.72972"
+       r="43.125" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#White-Yellow"
+       id="radialGradient2410"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86558,0,20.8708)"
+       cx="157.84048"
+       cy="150.89961"
+       fx="157.84048"
+       fy="150.89961"
+       r="43.125" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#orange-brown"
+       id="linearGradient3185"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1,0,0,1,320,0)"
+       x1="150.62578"
+       y1="150.62578"
+       x2="208.1227"
+       y2="205.42331" />
+  </defs>
+  <g
+     id="g2396"
+     transform="matrix(0.21889401,0,0,0.21889401,-0.0783411,-0.0345623)">
+    <use
+       xlink:href="#use2398"
+       height="220"
+       width="220"
+       y="0"
+       x="0"
+       id="use2400"
+       transform="translate(50,-87)" />
+    <use
+       xlink:href="#Back-Tri"
+       height="220"
+       width="220"
+       y="0"
+       x="0"
+       id="use2398"
+       transform="translate(-100,0)" />
+    <polygon
+       style="fill:url(#linearGradient3185);fill-opacity:1"
+       id="Back-Tri"
+       transform="matrix(-1,0,0,1,320,0)"
+       points="160,110 210,196.6 110,196.6 160,110 " />
+    <path
+       style="fill:url(#radialGradient2406);fill-opacity:1"
+       id="Power"
+       d="m 66.875,106 c 28.75,0 57.5,0 86.25,0 C 138.75,81.114583 124.375,56.229167 110,31.34375 95.625,56.229167 81.25,81.114583 66.875,106 z" />
+    <path
+       style="fill:url(#radialGradient2408);fill-opacity:1"
+       id="Courage"
+       d="m 16.875,192.59375 c 28.75,0 57.5,0 86.25,0 C 88.75,167.70833 74.375,142.82292 60,117.9375 45.625,142.82292 31.25,167.70833 16.875,192.59375 z" />
+    <path
+       style="fill:url(#radialGradient2410);fill-opacity:1"
+       id="Wisdom"
+       d="m 116.875,192.59375 c 28.75,0 57.5,0 86.25,0 C 188.75,167.70833 174.375,142.82292 160,117.9375 c -14.375,24.88542 -28.75,49.77083 -43.125,74.65625 z" />
+  </g>
+</svg>
