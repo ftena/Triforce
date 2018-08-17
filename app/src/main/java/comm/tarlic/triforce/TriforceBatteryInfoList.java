@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
@@ -14,21 +15,31 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.support.v4.content.ContextCompat;
 
-public class TriforceBatteryInfoList extends ListActivity {
+public class TriforceBatteryInfoList extends ListActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
 	private final ArrayList<HashMap<String,String>> list = new ArrayList<>();
 	
 	public final static String SAVED_TIMESTAMP = "comm.tarlic.triforce.TIMESTAMP";
+
+	/**
+	 * Id to identify the permission request.
+	 */
+	private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 777;
 
 	/*
 	 * TODO: do not use Timestamp(int, int, int, int, int, int, int).
@@ -51,6 +62,8 @@ public class TriforceBatteryInfoList extends ListActivity {
 	private TimestampDataSource mDataSource;
 	
 	private int callDuration = 0;
+
+
 	
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -162,131 +175,126 @@ public class TriforceBatteryInfoList extends ListActivity {
     	
     	String[] selectionArgs = new String[] { String.valueOf(timestamp.getTime()),
     			String.valueOf(android.provider.CallLog.Calls.OUTGOING_TYPE) };
-    	    	
+
+		// It holds the total calls duration.
+		int totalCallDuration = 0;
+
     	/*
     	 *  public final Cursor query
     	 *  	(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
     	 */
-    	
-    	Cursor mCursor = getContentResolver().query(
-    	        android.provider.CallLog.Calls.CONTENT_URI,
-    	        projection,
-    	        selection,
-    	        selectionArgs,
-    	        sortOrder
-    	        );    	
-    	
-    	/*Cursor mCursor = getContentResolver().query(
-        android.provider.CallLog.Calls.CONTENT_URI,
-        projection,
-        null,
-        null,
-        sortOrder
-        );*/
-    	
-    	// Retrieve the column-indexes of type, date and duration
-    	 
-        int typeColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.TYPE);
+    	if ( ContextCompat.checkSelfPermission( this, Manifest.permission.READ_CALL_LOG ) != PackageManager.PERMISSION_GRANTED ) {
 
-        int dateColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.DATE);
+            ActivityCompat.requestPermissions( this, new String[] {  Manifest.permission.READ_CALL_LOG  }, MY_PERMISSIONS_REQUEST_READ_CONTACTS );
+        } else {
 
-        int durationColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.DURATION);
-    	
-        // It holds the total calls duration.
-        
-        int totalCallDuration = 0;
-        
-    	// Some providers return null if an error occurs, others throw an exception.
-    	if (null == mCursor) {
-    	    /*
-    	     * Insert code here to handle the error. Be sure not to use the cursor! You may want to
-    	     * call android.util.Log.e() to log this error.
-    	     *
-    	     */
-    		
-    		android.util.Log.e(getLocalClassName(), "Null cursor for CallLog.Calls");
-    		
-    	// If the Cursor is empty, the provider found no matches
-    	} else if (mCursor.getCount() < 1) {
+			Cursor mCursor = getContentResolver().query(
+					android.provider.CallLog.Calls.CONTENT_URI,
+					projection,
+					selection,
+					selectionArgs,
+					sortOrder
+			);
 
-    	    /*
-    	     * Insert code here to notify the user that the search was unsuccessful. This isn't necessarily
-    	     * an error. You may want to offer the user the option to insert a new row, or re-type the
-    	     * search term.
-    	     */
 
-    		android.util.Log.e("TriforceBatteryInfoList", "The search was unsuccessful " +
-    				"for CallLog.Calls");
-    		
-    	} else {
-    	    // Insert code here to do something with the results
-    		
-    		while (mCursor.moveToNext()) {
+			// Retrieve the column-indexes of type, date and duration
 
-    	        // Gets the value from the column.
-    			// The type of the call: INCOMING_TYPE (1), OUTGOING_TYPE (2), MISSED_TYPE (3)
-    	        String type = mCursor.getString(typeColumn);
-    			// The duration of the call in seconds.
-    	        int duration = mCursor.getInt(durationColumn);
-    	        // The date the call occurred, in milliseconds since the epoch.
-    	        long date = mCursor.getLong(dateColumn);
-    	        
-    	        Timestamp ts = new Timestamp(date);
-    	        
-    	        android.util.Log.i(getLocalClassName(), "found timestamp = " + ts.getTime() + 
-    	        		" toString = " + ts.toString() + " type = " + type);
+			int typeColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.TYPE);
 
-    	        /* Using Calendar to get the date 
-    	        final Calendar cal = Calendar.getInstance();
-    	        cal.setTimeInMillis(date);
-    	            	        
-    	        android.util.Log.i(getLocalClassName(), "date = " + String.valueOf(date));
-    	        */
-    	        
-    	        /* The actual Timestamp object is later than the configured
-    	         * by user.
-    	         * This "if" clause is not necessary if the selection was made using
-    	         * the query above.  	         
-    	        */
-    	        // if (timestamp.after(configuredTimestamp))    	        
-    	        	
-    	        totalCallDuration += duration;
-    	        
-    	        // end of while loop
-    	    }
+			int dateColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.DATE);
 
-    	}
-    	
-    	android.util.Log.i(getLocalClassName(), "totalCallDuration = " + String.valueOf(totalCallDuration));
+			int durationColumn = mCursor.getColumnIndex(android.provider.CallLog.Calls.DURATION);
+
+
+			// Some providers return null if an error occurs, others throw an exception.
+			if (null == mCursor) {
+				/*
+				 * Insert code here to handle the error. Be sure not to use the cursor! You may want to
+				 * call android.util.Log.e() to log this error.
+				 *
+				 */
+
+				android.util.Log.e(getLocalClassName(), "Null cursor for CallLog.Calls");
+
+				// If the Cursor is empty, the provider found no matches
+			} else if (mCursor.getCount() < 1) {
+
+				/*
+				 * Insert code here to notify the user that the search was unsuccessful. This isn't necessarily
+				 * an error. You may want to offer the user the option to insert a new row, or re-type the
+				 * search term.
+				 */
+
+				android.util.Log.e("TriforceBatteryInfoList", "The search was unsuccessful " +
+						"for CallLog.Calls");
+
+			} else {
+				// Insert code here to do something with the results
+
+				while (mCursor.moveToNext()) {
+
+					// Gets the value from the column.
+					// The type of the call: INCOMING_TYPE (1), OUTGOING_TYPE (2), MISSED_TYPE (3)
+					String type = mCursor.getString(typeColumn);
+					// The duration of the call in seconds.
+					int duration = mCursor.getInt(durationColumn);
+					// The date the call occurred, in milliseconds since the epoch.
+					long date = mCursor.getLong(dateColumn);
+
+					Timestamp ts = new Timestamp(date);
+
+					android.util.Log.i(getLocalClassName(), "found timestamp = " + ts.getTime() +
+							" toString = " + ts.toString() + " type = " + type);
+
+					totalCallDuration += duration;
+				}
+
+			}
+
+			android.util.Log.i(getLocalClassName(), "totalCallDuration = " + String.valueOf(totalCallDuration));
+		}
     	
     	return totalCallDuration;
-    	
-    	// Format the string
-    	/*SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-    	
-    	sdf.setTimeZone(java.util.TimeZone.getTimeZone("GMT"));
-    	
-    	HashMap<String,String> temp = new HashMap<String,String>();
-		temp.put("field","Total call duration");
-        temp.put("value", sdf.format(totalCallDuration*1000));
-        
-    	if(update == false) {    
-    		// Appends the specified element to the list 
-			list.add(temp);
-    	} else {
-    		list.remove(0);
-    		
-    	    list.add(0, temp);
-    	}
-    	
-    	showList();*/
+	}
+
+	/**
+
+	 * Callback received when a permissions request has been completed.
+
+	 */
+
+	@Override
+
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+										   @NonNull int[] grantResults) {
+		switch (requestCode) {
+			case MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+
+				// Received permission result for camera permission.
+
+				Log.i(getLocalClassName(), "Received response for permission request.");
+
+
+				// Check if the only required permission has been granted
+
+				if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+					// Camera permission has been granted, preview can be displayed
+
+					Log.i(getLocalClassName(), "Permission has now been granted.");
+				} else {
+
+					Log.i(getLocalClassName(), "Permission was NOT granted.");
+				}
+			}
+		}
 	}
 
 	//@Override    
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.triforce_menu, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
         
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -348,7 +356,7 @@ public class TriforceBatteryInfoList extends ListActivity {
             	mDataSource.update(ts.getTime());
             	
             	// Update the call duration using the value configured by the user
-            	setCallDuration(calculateCallDuration(ts, false));
+				setCallDuration(calculateCallDuration(ts, false));
             	
             	// list.clear();
             	

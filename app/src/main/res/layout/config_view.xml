@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/EditButton"
         android:text="@string/date"
-        style="@android:style/TextAppearance.Small" >
+        style="@android:style/TextAppearance.Medium" >
     </TextView>
 
     <Button
