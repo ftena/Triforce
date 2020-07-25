@@ -11,14 +11,17 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.0"
-   width="72"
-   height="72"
+   width="382.03107"
+   height="330.8389"
    viewBox="0 0 0 173.6"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="Triforce.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="ic_app_icon.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\Users\frant\Development\android-studio\Triforce\app\src\main\assets\ic_app_icon.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <metadata
      id="metadata21">
     <rdf:RDF>
@@ -32,8 +35,8 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     inkscape:window-height="721"
-     inkscape:window-width="1381"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      guidetolerance="10.0"
@@ -45,12 +48,16 @@
      id="base"
      showgrid="false"
      inkscape:zoom="1.4849242"
-     inkscape:cx="95.138317"
-     inkscape:cy="77.999296"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:cx="25.376641"
+     inkscape:cy="107.79798"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:current-layer="svg2"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <defs
      id="defs8">
     <inkscape:perspective
@@ -126,38 +133,16 @@
        xlink:href="#White-Yellow"
        id="radialGradient2406"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.86558,0,9.23089)"
+       gradientTransform="matrix(0.32258065,0,0,0.27921936,0.5161285,3.5583511)"
        cx="114.31902"
        cy="58.69239"
        fx="114.31902"
        fy="58.69239"
        r="43.125" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#White-Yellow"
-       id="radialGradient2408"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.86558,0,20.8708)"
-       cx="56.490795"
-       cy="172.72972"
-       fx="56.490795"
-       fy="172.72972"
-       r="43.125" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#White-Yellow"
-       id="radialGradient2410"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,0.86558,0,20.8708)"
-       cx="157.84048"
-       cy="150.89961"
-       fx="157.84048"
-       fy="150.89961"
-       r="43.125" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#orange-brown"
-       id="linearGradient3154"
+       id="linearGradient3370"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(-1,0,0,1,320,0)"
        x1="150.62578"
@@ -166,40 +151,19 @@
        y2="205.42331" />
   </defs>
   <g
-     id="g2396"
-     transform="matrix(0.32258065,0,0,0.32258065,0.5161285,0.58064463)">
-    <use
-       xlink:href="#use2398"
-       height="220"
-       width="220"
-       y="0"
-       x="0"
-       id="use2400"
-       transform="translate(50,-87)" />
-    <use
-       xlink:href="#Back-Tri"
-       height="220"
-       width="220"
-       y="0"
-       x="0"
-       id="use2398"
-       transform="translate(-100,0)" />
+     id="g3372"
+     transform="matrix(11.842963,0,0,11.842963,-235.33113,-94.743698)"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
     <polygon
-       style="fill:url(#linearGradient3154);fill-opacity:1"
-       id="Back-Tri"
-       transform="matrix(-1,0,0,1,320,0)"
-       points="160,110 160,110 210,196.6 110,196.6 " />
+       style="fill:url(#linearGradient3370);fill-opacity:1"
+       id="use2400"
+       transform="matrix(-0.32258065,0,0,0.32258065,87.612904,-27.483872)"
+       points="210,196.6 110,196.6 160,110 160,110 " />
     <path
        style="fill:url(#radialGradient2406);fill-opacity:1"
        id="Power"
-       d="m 66.875,106 c 28.75,0 57.5,0 86.25,0 C 138.75,81.114583 124.375,56.229167 110,31.34375 95.625,56.229167 81.25,81.114583 66.875,106 z" />
-    <path
-       style="fill:url(#radialGradient2408);fill-opacity:1"
-       id="Courage"
-       d="m 16.875,192.59375 c 28.75,0 57.5,0 86.25,0 C 88.75,167.70833 74.375,142.82292 60,117.9375 45.625,142.82292 31.25,167.70833 16.875,192.59375 z" />
-    <path
-       style="fill:url(#radialGradient2410);fill-opacity:1"
-       id="Wisdom"
-       d="m 116.875,192.59375 c 28.75,0 57.5,0 86.25,0 C 188.75,167.70833 174.375,142.82292 160,117.9375 c -14.375,24.88542 -28.75,49.77083 -43.125,74.65625 z" />
+       d="m 22.088709,34.774194 c 9.274194,0 18.548388,0 27.822582,0 C 45.274194,26.74664 40.637097,18.719086 36,10.691532 31.362903,18.719086 26.725806,26.74664 22.088709,34.774194 Z"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

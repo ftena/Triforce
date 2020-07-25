@@ -11,15 +11,15 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.0"
-   width="1024"
-   height="500"
+   width="512"
+   height="512"
    viewBox="0 0 0 173.6"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="triforce_feature_graphic.svg"
+   sodipodi:docname="triforce_feature_graphic_512x512.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="C:\Users\frant\Development\android-studio\Triforce\app\src\main\assets\triforce_feature_graphic.png"
+   inkscape:export-filename="C:\Users\frant\Development\android-studio\Triforce\app\src\main\assets\triforce_feature_graphic_512x512.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <metadata
@@ -30,7 +30,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -48,7 +48,7 @@
      id="base"
      showgrid="false"
      inkscape:zoom="0.7424621"
-     inkscape:cx="267.40245"
+     inkscape:cx="31.026748"
      inkscape:cy="268.87918"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
@@ -129,7 +129,7 @@
        xlink:href="#White-Yellow"
        id="radialGradient2408"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(5.5275937,0,0,4.6895853,180.34435,-467.48197)"
+       gradientTransform="matrix(5.5275937,0,0,4.6895853,180.34435,-455.48197)"
        cx="56.490795"
        cy="172.72972"
        fx="56.490795"
@@ -293,7 +293,7 @@
     </linearGradient>
     <linearGradient
        id="svg_3"
-       x1="797.468"
+       x1="797.46802"
        y1="-235.94595"
        x2="1248.9954"
        y2="-235.94595"
@@ -328,7 +328,7 @@
   </defs>
   <g
      id="g4515"
-     transform="matrix(1.2018834,0,0,0.82933816,1.1996859,116.8528)"
+     transform="matrix(0.6009417,0,0,0.84924228,0.59984436,119.65727)"
      style="fill:#6897bb;fill-opacity:1">
     <title
        id="title4517">Layer 1</title>
@@ -341,57 +341,61 @@
        y="-438.42001"
        width="243"
        height="839"
-       style="fill:#6897bb;stroke-width:5;stroke-dasharray:none;fill-opacity:1" />
+       style="fill:#6897bb;fill-opacity:1;stroke-width:5;stroke-dasharray:none" />
   </g>
   <style
      id="style4447"
      type="text/css"><![CDATA[
 	.st0{fill:#010101;}
 ]]></style>
-  <polygon
-     style="fill:url(#linearGradient3422);fill-opacity:1"
-     id="use2398"
-     transform="matrix(-5.5275937,0,0,5.4178532,1396.415,-580.5569)"
-     points="160,110 210,196.6 110,196.6 160,110 " />
-  <path
-     inkscape:connector-curvature="0"
-     d="m 273.6225,462.88776 c 158.91831,0 317.83662,0 476.75495,0 C 670.9183,328.06222 591.45912,193.23672 511.99996,58.411171 432.54081,193.23672 353.08165,328.06222 273.6225,462.88776 Z"
-     id="Courage"
-     style="fill:url(#radialGradient2408);fill-opacity:1" />
   <g
-     id="g4206"
-     transform="matrix(0.8992372,0,0,0.8992372,53.802034,33.77926)">
+     id="g3398"
+     transform="matrix(0.88193772,0,0,0.88193772,-195.55212,24.932321)">
+    <polygon
+       points="160,110 210,196.6 110,196.6 160,110 "
+       transform="matrix(-5.5275937,0,0,5.4178532,1396.415,-568.5569)"
+       id="use2398"
+       style="fill:url(#linearGradient3422);fill-opacity:1" />
     <path
-       id="path4469"
-       d="m 583.60815,425.67784 c 0,11.02057 -9.11468,19.95426 -20.35843,19.95426 l -103.15199,0 c -11.24376,0 -20.3591,-8.93369 -20.3591,-19.95426 l 0,-223.49263 c 0,-11.02122 9.11534,-19.95489 20.3591,-19.95489 l 103.15134,0 c 11.24375,0 20.35842,8.93367 20.35842,19.95489 l 0,223.49263 z"
-       stroke-miterlimit="10"
-       inkscape:connector-curvature="0"
-       style="fill:none;stroke:#53a837;stroke-width:10.06845856;stroke-miterlimit:10;stroke-opacity:1" />
-    <rect
-       style="fill:#53a837;fill-opacity:1"
-       id="rect4471"
-       height="9.968461"
-       width="65.378082"
-       y="156.59807"
-       x="478.98508" />
+       style="fill:url(#radialGradient2408);fill-opacity:1"
+       id="Courage"
+       d="m 273.6225,474.88776 c 158.91831,0 317.83662,0 476.75495,0 C 670.9183,340.06222 591.45912,205.23672 511.99996,70.411171 432.54081,205.23672 353.08165,340.06222 273.6225,474.88776 Z"
+       inkscape:connector-curvature="0" />
     <g
-       style="fill:#53a837;fill-opacity:1"
-       transform="matrix(0.65530767,0,0,0.64229771,343.91496,136.68752)"
-       id="g4473">
+       transform="matrix(0.8992372,0,0,0.8992372,53.802034,45.77926)"
+       id="g4206">
       <path
-         style="fill:#53a837;fill-opacity:1"
-         id="path4475"
-         d="m 334.5,155.627 0,-43.127 c 0,-8.284 -6.716,-15 -15,-15 l -128,0 c -8.284,0 -15,6.716 -15,15 l 0,134.348 158,-91.221 z"
-         inkscape:connector-curvature="0" />
-      <polygon
-         style="fill:#53a837;fill-opacity:1"
-         id="polygon4477"
-         points="334.5,171.792 176.5,263.013 176.5,367.535 334.5,276.314 " />
-      <path
-         style="fill:#53a837;fill-opacity:1"
-         id="path4479"
-         d="m 176.5,383.702 0,53.798 c 0,8.284 6.716,15 15,15 l 128,0 c 8.284,0 15,-6.716 15,-15 l 0,-145.02 -158,91.222 z"
-         inkscape:connector-curvature="0" />
+         style="fill:none;stroke:#53a837;stroke-width:10.06845856;stroke-miterlimit:10;stroke-opacity:1"
+         inkscape:connector-curvature="0"
+         stroke-miterlimit="10"
+         d="m 583.60815,425.67784 c 0,11.02057 -9.11468,19.95426 -20.35843,19.95426 l -103.15199,0 c -11.24376,0 -20.3591,-8.93369 -20.3591,-19.95426 l 0,-223.49263 c 0,-11.02122 9.11534,-19.95489 20.3591,-19.95489 l 103.15134,0 c 11.24375,0 20.35842,8.93367 20.35842,19.95489 l 0,223.49263 z"
+         id="path4469" />
+      <rect
+         x="478.98508"
+         y="156.59807"
+         width="65.378082"
+         height="9.968461"
+         id="rect4471"
+         style="fill:#53a837;fill-opacity:1" />
+      <g
+         id="g4473"
+         transform="matrix(0.65530767,0,0,0.64229771,343.91496,136.68752)"
+         style="fill:#53a837;fill-opacity:1">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 334.5,155.627 0,-43.127 c 0,-8.284 -6.716,-15 -15,-15 l -128,0 c -8.284,0 -15,6.716 -15,15 l 0,134.348 158,-91.221 z"
+           id="path4475"
+           style="fill:#53a837;fill-opacity:1" />
+        <polygon
+           points="334.5,171.792 176.5,263.013 176.5,367.535 334.5,276.314 "
+           id="polygon4477"
+           style="fill:#53a837;fill-opacity:1" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 176.5,383.702 0,53.798 c 0,8.284 6.716,15 15,15 l 128,0 c 8.284,0 15,-6.716 15,-15 l 0,-145.02 -158,91.222 z"
+           id="path4479"
+           style="fill:#53a837;fill-opacity:1" />
+      </g>
     </g>
   </g>
 </svg>

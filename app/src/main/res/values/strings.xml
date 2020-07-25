@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Triforce</string>
+	<string name="app_name">Battery TriChecker</string>
 	<string name="title_activity_display_config">Configuration</string>
 	<string name="title_activity_display_picker">Picker</string>
 	<string-array name="battery_info_array">
