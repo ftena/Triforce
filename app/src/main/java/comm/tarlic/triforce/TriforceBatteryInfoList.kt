@@ -9,6 +9,8 @@ import android.content.IntentFilter
 import android.os.BatteryManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat.OnRequestPermissionsResultCallback
+import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -16,9 +18,10 @@ import android.view.View
 import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import com.tarlic.triforce.R
 import java.util.*
 
-class TriforceBatteryInfoList : ListActivity(), OnRequestPermissionsResultCallback {
+class TriforceBatteryInfoList: ListActivity(), OnRequestPermissionsResultCallback {
     private val list = ArrayList<HashMap<String, String?>>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class TriforceBatteryInfoList : ListActivity(), OnRequestPermissionsResultCallba
         // We'll define a custom screen layout here (the one shown above), but
         // typically, you could just use the standard ListActivity layout.
         setContentView(R.layout.list_view)
+
         this.registerReceiver(BatteryReceiver,
                 IntentFilter(Intent.ACTION_BATTERY_CHANGED))
     }
@@ -74,14 +78,19 @@ class TriforceBatteryInfoList : ListActivity(), OnRequestPermissionsResultCallba
                 list,
                 R.layout.row_view, arrayOf("field", "value"), intArrayOf(R.id.field, R.id.value)) // Parallel array of which template objects to bind to those columns.
         val listView = findViewById<View>(android.R.id.list) as ListView
-        listView.adapter = adapter
+
+        //listView.adapter.apply { adapter };
+
+        listView.adapter = adapter;
+
+        //ListView listView=(ListView)findViewById(R.layout.list_view);
     }
 
     private fun showInfo() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(R.string.dialog_info)
                 .setCancelable(true)
-                .setPositiveButton("Ok") { dialog, id -> dialog.cancel() }
+                .setPositiveButton("Ok") { dialog, _ -> dialog.cancel() }
         val alert = builder.create()
         alert.show()
     }
@@ -90,8 +99,8 @@ class TriforceBatteryInfoList : ListActivity(), OnRequestPermissionsResultCallba
         val builder = AlertDialog.Builder(this)
         builder.setMessage(R.string.dialog_exit)
                 .setCancelable(false)
-                .setPositiveButton("Yes") { dialog, id -> finish() }
-                .setNegativeButton("No") { dialog, id -> dialog.cancel() }
+                .setPositiveButton("Yes") { _, _ -> finish() }
+                .setNegativeButton("No") { dialog, _ -> dialog.cancel() }
         val alert = builder.create()
         alert.show()
     }
