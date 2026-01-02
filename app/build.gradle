@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    compileSdk 36
     namespace "com.tarlic.triforce"
 
     defaultConfig {
